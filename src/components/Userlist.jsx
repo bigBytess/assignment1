@@ -20,7 +20,7 @@ const Userlist = () => {
     return messagesList
       .filter((message) => message.senderId === id || message.recieverId === id)
       .sort((a, b) => b.timestamp - a.timestamp)?.[0]?.text;
-    // console.log({ res, id });
+  
   };
 
   const handleSelectUser = (user) => {

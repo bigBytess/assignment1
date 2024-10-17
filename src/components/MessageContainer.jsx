@@ -64,31 +64,38 @@ const Message = ({ message }) => {
 const MessageContainer = () => {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(true);
-  const [conversations, setConversation] = useState([]);
   const currentUser = useSelector((state) => state.users.currentUser);
   const dispatch = useDispatch();
   const messageContainerRef = useRef(null);
-  const messagesList = useSelector((state) => state.messages.messages).filter(
-    (message) =>
-      message.senderId == currentUser.id || message.recieverId == currentUser.id
-  );
+  const messagesList = useSelector((state) => state.messages.messages);
 
-  console.log(conversations);
-
+  const list = useMemo(() => {
+    return messagesList
+      .filter(
+        (message) =>
+          message.senderId == currentUser.id ||
+          message.recieverId == currentUser.id
+      )
+      .sort((a, b) => a.timestamp - b.timestamp);
+  }, [messagesList]);
   useEffect(() => {
     if (messageContainerRef.current) {
       console.log("fron here");
       messageContainerRef.current.scrollTop =
         messageContainerRef.current.scrollHeight;
     }
-  }, [conversations.length]);
+  }, [list]);
 
   useEffect(() => {
     const asyncWrapper = async () => {
       setLoading(true);
       await delay(3000);
-      setConversation(messagesList);
       setLoading(false);
+      if (messageContainerRef.current) {
+        console.log("fron here pass");
+        messageContainerRef.current.scrollTop =
+          messageContainerRef.current.scrollHeight;
+      }
     };
     asyncWrapper();
   }, []);
@@ -102,14 +109,6 @@ const MessageContainer = () => {
           text: message,
         })
       );
-      setConversation((prev) => [
-        ...prev,
-        {
-          timestamp: Date.now(),
-          recieverId: currentUser.id,
-          text: message,
-        },
-      ]);
       setMessage("");
     }
   };
@@ -120,7 +119,7 @@ const MessageContainer = () => {
         sx={{ height: "80%", overflow: "auto", px: { xs: 2, md: 6 }, pt: 2 }}
       >
         {!loading ? (
-          conversations.map((message) => <Message message={message} />)
+          list.map((message) => <Message message={message} />)
         ) : (
           <ChatSkeleton />
         )}

@@ -14,6 +14,7 @@ const messageSlice = createSlice({
         text: "Hii hello",
         timestamp: 1728969083455,
       },
+
       {
         senderId: 1,
         text: "Hii hello",
@@ -80,27 +81,57 @@ const messageSlice = createSlice({
         timestamp: 1728969083455,
       },
       {
-        senderId: 1,
+        senderId: 2,
         text: "Hii hello",
         timestamp: 1728969083455,
       },
       {
-        senderId: 1,
+        senderId: 2,
         text: "Hii hello",
         timestamp: 1728969083455,
       },
       {
-        senderId: 1,
+        senderId: 2,
         text: "Hii hello",
         timestamp: 1728969083455,
       },
       {
-        senderId: 1,
+        senderId: 2,
         text: "Hii hello",
         timestamp: 1728969083455,
       },
       {
-        senderId: 1,
+        senderId: 2,
+        text: "Hii hello",
+        timestamp: 1728969083455,
+      },
+      {
+        senderId: 2,
+        text: "Hii hello",
+        timestamp: 1728969083455,
+      },
+      {
+        senderId: 2,
+        text: "Hii hello",
+        timestamp: 1728969083455,
+      },
+      {
+        senderId: 2,
+        text: "Hii hello",
+        timestamp: 1728969083455,
+      },
+      {
+        senderId: 2,
+        text: "Hii hello",
+        timestamp: 1728969083455,
+      },
+      {
+        senderId: 2,
+        text: "Hii hello",
+        timestamp: 1728969083455,
+      },
+      {
+        senderId: 2,
         text: "Hii hello",
         timestamp: 1728969083455,
       },
